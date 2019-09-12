@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <set>
 
 class VTKProcessor
 {
@@ -19,7 +20,7 @@ private:
 	static bool SortStrategy_(const std::tuple<double, double, double, ScalarDataAtPoint>& a, const std::tuple<double, double, double, ScalarDataAtPoint>& b);
 	
 	template<typename ScalarDataAtPoint>
-	static std::vector<double> GetUniqueComponents(std::vector<std::tuple<double, double, double, ScalarDataAtPoint>>& list_of_points, int component);
+	static std::set<double> GetUniqueComponents(std::vector<std::tuple<double, double, double, ScalarDataAtPoint>>& list_of_points, int component);
 };
 
 template<typename ScalarDataAtPoint>
@@ -28,9 +29,9 @@ inline void VTKProcessor::Write3DRectilinearGridToFile(std::vector<std::tuple<do
 	// (1) Sort the data appropreately.
 	std::sort(list_of_points.begin(), list_of_points.end(), SortStrategy_<ScalarDataAtPoint>);
 	// (2) Get components as their own seperate list.
-	std::vector<double> x_components = GetUniqueComponents(list_of_points, 0);
-	std::vector<double> y_components = GetUniqueComponents(list_of_points, 1);
-	std::vector<double> z_components = GetUniqueComponents(list_of_points, 2);
+	std::set<double> x_components = GetUniqueComponents(list_of_points, 0);
+	std::set<double> y_components = GetUniqueComponents(list_of_points, 1);
+	std::set<double> z_components = GetUniqueComponents(list_of_points, 2);
 
 	// (3) Write preliminary header data to file.
 	std::ofstream vtk_file;
@@ -99,10 +100,10 @@ inline bool VTKProcessor::SortStrategy_(const std::tuple<double, double, double,
 }
 
 template<typename ScalarDataAtPoint>
-inline std::vector<double> VTKProcessor::GetUniqueComponents(std::vector<std::tuple<double, double, double, ScalarDataAtPoint>>& list_of_points, int component)
+inline std::set<double> VTKProcessor::GetUniqueComponents(std::vector<std::tuple<double, double, double, ScalarDataAtPoint>>& list_of_points, int component)
 {
 	// Initialize component values vector
-	std::vector<double> component_values(list_of_points.size());
+	std::set<double> component_values;
 	// Add all components to the vector
 	for (int index = 0; index < list_of_points.size(); index++)
 	{
@@ -119,14 +120,17 @@ inline std::vector<double> VTKProcessor::GetUniqueComponents(std::vector<std::tu
 		{
 			component_value = std::get<2>(list_of_points[index]);
 		}
-		component_values[index] = component_value;
+		component_values.insert(component_value);
 	}
+	/*
 	// Remove duplicates
 	std::vector<double>::iterator iter;
 	iter = std::unique(component_values.begin(), component_values.end());
 	// Resize the vector so there are no "undefined" values due to the duplicate removal.
-	component_values.resize(std::distance(component_values.begin(), iter));
+	//component_values.resize(std::distance(component_values.begin(), iter));
+	component_values.erase(std::unique(component_values.begin(), component_values.end()), component_values.end());
 	// Return duplicate-free vector
+	*/
 	return component_values;
 }
 
