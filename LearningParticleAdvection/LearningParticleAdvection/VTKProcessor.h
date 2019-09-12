@@ -40,25 +40,27 @@ inline void VTKProcessor::Write3DRectilinearGridToFile(std::vector<std::tuple<do
 	vtk_file << "vtk output" << std::endl;
 	vtk_file << "ASCII" << std::endl;
 	vtk_file << "DATASET RECTILINEAR_GRID" << std::endl;
-	vtk_file << "DIMENSIONS " << x_components.size() << " " << y_components.size() << " " << z_components.size() << std::endl;
+	// The +1 to the component size is due to a pattern seen in other rectilinear grids -- it may not be accurate.
+	vtk_file << "DIMENSIONS " << x_components.size() + 1 << " " << y_components.size() + 1 << " " << z_components.size() + 1 << std::endl;
 
+	// All sets are ordered by the C++ standard, as defined by the << operator of the elements.
 	// (4a) Write x coordinates
-	vtk_file << "X_COORDINATES " << x_components.size() << " double" << std::endl;
-	for (int index = 0; index < x_components.size(); index++)
+	vtk_file << "X_COORDINATES " << x_components.size() + 1 << " double" << std::endl;
+	for (double x_component : x_components)
 	{
-		vtk_file << x_components[index] << std::endl;
+		vtk_file << x_component << std::endl;
 	}
 	// (4b) Write y coordinates
-	vtk_file << "Y_COORDINATES " << y_components.size() << " double" << std::endl;
-	for (int index = 0; index < y_components.size(); index++)
+	vtk_file << "Y_COORDINATES " << y_components.size() + 1 << " double" << std::endl;
+	for (double y_component : y_components)
 	{
-		vtk_file << y_components[index] << std::endl;
+		vtk_file << y_component << std::endl;
 	}
 	// (4c) Write z coordinates
-	vtk_file << "Z_COORDINATES " << z_components.size() << " double" << std::endl;
-	for (int index = 0; index < z_components.size(); index++)
+	vtk_file << "Z_COORDINATES " << z_components.size() + 1 << " double" << std::endl;
+	for (double z_component : z_components)
 	{
-		vtk_file << z_components[index] << std::endl;
+		vtk_file << z_component << std::endl;
 	}
 	/*
 	SCALARS mesh_quality/aspect float
@@ -67,9 +69,11 @@ LOOKUP_TABLE default
 	// (5) Write out scalar data 
 	// (Is each scalar is technically assigned to each cell where the point is the one in the positive xyz corner?)
 	vtk_file << "CELL_DATA " << list_of_points.size() << std::endl;
+	
 	//vtk_file << "FIELD FieldData 4" << std::endl;
 	//vtk_file << "density 1               " << list_of_points.size() << " double" << std::endl;
-	vtk_file << "SCALARS generated_value" << " double" << std::endl;
+	
+	vtk_file << "SCALARS generated_value" << " double 1" << std::endl;
 	vtk_file << "LOOKUP_TABLE default" << std::endl;
 	for (int index = 0; index < list_of_points.size() - 1; index++)
 	{
