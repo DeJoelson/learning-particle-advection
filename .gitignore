@@ -1,0 +1,10 @@
+LearningParticleAdvection/Debug/
+LearningParticleAdvection/LearningParticleAdvection/Debug/
+LearningParticleAdvection/.vs/
+LearningParticleAdvection/LearningParticleAdvection/.vs/
+**/*.vcxproj
+**/*.vcxproj.*
+**/*.sln
+**/*.vtk
+**/*.csv
+**/*.log
