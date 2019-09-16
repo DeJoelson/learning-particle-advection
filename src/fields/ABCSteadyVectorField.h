@@ -1,8 +1,9 @@
 // Arnold-Beltrami-Childress (ABC) flow
-#ifndef ABC_VECTOR_FIELD_H
-#define ABC_VECTOR_FIELD_H
+#ifndef ABC_STEADY_VECTOR_FIELD_H
+#define ABC_STEADY_VECTOR_FIELD_H
 
-#include "ParameterizedVectorField.h"
+#include "archtypes/ParameterizedSteadyVectorField.h"
+
 class ABCVectorField : public ParameterizedVectorField
 {
 	private:

@@ -26,9 +26,9 @@ private:
 template<typename ScalarDataAtPoint>
 inline void VTKProcessor::Write3DRectilinearGridToFile(std::vector<std::tuple<double, double, double, ScalarDataAtPoint>>& list_of_points, std::string filename)
 {
-	// (1) Sort the data appropreately.
+	// (1) Sort the data appropriately.
 	std::sort(list_of_points.begin(), list_of_points.end(), SortStrategy_<ScalarDataAtPoint>);
-	// (2) Get components as their own seperate list.
+	// (2) Get components as their own separate list.
 	std::set<double> x_components = GetUniqueComponents(list_of_points, 0);
 	std::set<double> y_components = GetUniqueComponents(list_of_points, 1);
 	std::set<double> z_components = GetUniqueComponents(list_of_points, 2);

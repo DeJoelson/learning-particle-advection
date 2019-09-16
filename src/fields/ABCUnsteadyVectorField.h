@@ -4,10 +4,11 @@
 // By N. H. Brummel, F. Cattaneo, and S. M. Tobias
 // https://iopscience.iop.org/article/10.1016/S0169-5983(00)00027-7/pdf
 
-#ifndef ABC_TIME_SERIES_VECTOR_FIELD_H
-#define ABC_TIME_SERIES_VECTOR_FIELD_H
+#ifndef ABC_UNSTEADY_VECTOR_FIELD_H
+#define ABC_UNSTEADY_VECTOR_FIELD_H
 
-#include "ParameterizedTimeSeriesVectorField.h"
+#include "archtypes/ParameterizedUnsteadVectorField.h"
+
 class ABCTimeSeriesVectorField : public ParameterizedTimeSeriesVectorField
 {
 private:

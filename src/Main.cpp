@@ -1,15 +1,15 @@
-// LearningParticleAdvection.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
-#include "ABCTimeSeriesVectorField.h"
-#include "NP.h"
-#include "VTKProcessor.h"
+#include "fields/ABCUnsteadyVectorField.h"
+#include "utils/NP.h"
+#include "dataio/VTKProcessor.h"
 
 int main()
 {
 	// Heavy use of "header library"-like functionality for code reuse going into the future.
-	// Still need to decide on an integration strategy. Stepwise Euler is probably sufficent for now.
+	// Still need to decide on an integration strategy. Stepwise Euler is probably sufficient for now.
 	
 	/* The "standard" way to access implemented abstract methods from parent class:
 	Base* b;
@@ -18,12 +18,9 @@ int main()
 	b->abstractMethod();	
 	*/
 	
-	ParameterizedTimeSeriesVectorField* field;
-	ABCTimeSeriesVectorField abcTimeSeriesInstance();
-	field = &abcTimeSeriesInstance;
-
-	std::cout << field << std::endl;
-	std::cout << abcTimeSeriesInstance << std::endl;
+	ParameterizedUnsteadyVectorField* field;
+	ABCUnsteadyVectorField abcTimeSeriesInstance();
+	field = &abcUnsteadyInstance;
 
 	//ABCTimeSeriesVectorField field();
 

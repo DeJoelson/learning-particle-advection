@@ -1,6 +1,6 @@
-#include "ParameterizedVectorField.h"
+#include "ParameterizedSteadyVectorField.h"
 
-double ParameterizedVectorField::getDeltaMValue(double x, double y, double z)
+double ParameterizedSteadyVectorField::getDeltaMValue(double x, double y, double z)
 {
 	double dX = getDeltaXComponentValue(x, y, z);
 	double dY = getDeltaYComponentValue(x, y, z);

@@ -1,8 +1,8 @@
-#ifndef PARAMETERIZED_VECTOR_FIELD_H
-#define PARAMETERIZED_VECTOR_FIELD_H
+#ifndef PARAMETERIZED_STEADY_VECTOR_FIELD_H
+#define PARAMETERIZED_STEADY_VECTOR_FIELD_H
 
 #include <math.h>
-class ParameterizedVectorField
+class ParameterizedSteadyVectorField
 {
 	public:
 		virtual double getDeltaXComponentValue(double x, double y, double z) = 0;
