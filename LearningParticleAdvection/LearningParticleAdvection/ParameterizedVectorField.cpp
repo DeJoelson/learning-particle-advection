@@ -1,4 +1,4 @@
-#include "ParamaterizedVectorField.h"
+#include "ParameterizedVectorField.h"
 
 double ParameterizedVectorField::getDeltaMValue(double x, double y, double z)
 {

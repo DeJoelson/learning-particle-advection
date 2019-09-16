@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "ABCVectorField.h"
+#include "ABCTimeSeriesVectorField.h"
 #include "NP.h"
 #include "VTKProcessor.h"
 
@@ -18,9 +18,14 @@ int main()
 	b->abstractMethod();	
 	*/
 	
-	ParameterizedVectorField* field;
-	ABCVectorField abcInstance(1.0, 1.0, 1.0);
-	field = &abcInstance;
+	ParameterizedTimeSeriesVectorField* field;
+	ABCTimeSeriesVectorField abcTimeSeriesInstance();
+	field = &abcTimeSeriesInstance;
+
+	std::cout << field << std::endl;
+	std::cout << abcTimeSeriesInstance << std::endl;
+
+	//ABCTimeSeriesVectorField field();
 
 	std::vector<std::tuple<double, double, double, double>> list_of_points;
 
@@ -31,17 +36,19 @@ int main()
 	std::vector<double> y_coords = NP::Linspace(-10, 10, 64);
 	std::vector<double> z_coords = NP::Linspace(-10, 10, 64);
 
+	double time_step = 0.0;
+
 	for (double x_val : x_coords)
 	{
 		for (double y_val : y_coords)
 		{
 			for (double z_val : z_coords)
 			{
-				double mag = field->getDeltaMValue(x_val, y_val, z_val);
+				double mag = field->getDeltaMValue(time_step, x_val, y_val, z_val);
 				list_of_points.push_back(std::make_tuple(x_val, y_val, z_val, mag));
 			}
 		}
 	}
 
-	VTKProcessor::Write3DRectilinearGridToFile <double> (list_of_points, std::string("sam_output.vtk"));
+	VTKProcessor::Write3DRectilinearGridToFile <double> (list_of_points, std::string("sam_output_4.vtk"));
 }
