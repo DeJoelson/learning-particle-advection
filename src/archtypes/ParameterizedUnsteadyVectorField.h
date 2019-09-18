@@ -5,7 +5,6 @@
 class ParameterizedUnsteadyVectorField
 {
 public:
-    virtual ~ParameterizedUnsteadyVectorField();
     virtual double getDeltaXComponentValue(double t, double x, double y, double z) = 0;
     virtual double getDeltaYComponentValue(double t, double x, double y, double z) = 0;
     virtual double getDeltaZComponentValue(double t, double x, double y, double z) = 0;
