@@ -12,22 +12,22 @@
 class ABCUnsteadyVectorField : public ParameterizedUnsteadyVectorField
 {
 private:
-	double epsilon;
-	double omega;
-	public:
-		ABCUnsteadyVectorField()
-		{
-			this->epsilon = 1.0;
-			this->omega = 1.0;
-		}
-		ABCUnsteadyVectorField(double epsilon, double omega)
-		{
-			this->epsilon = epsilon;
-			this->omega = omega;
-		}
-		double getDeltaXComponentValue(double t, double x, double y, double z);
-		double getDeltaYComponentValue(double t, double x, double y, double z);
-		double getDeltaZComponentValue(double t, double x, double y, double z);
+    double epsilon;
+    double omega;
+public:
+    ABCUnsteadyVectorField()
+    {
+        this->epsilon = 1.0;
+        this->omega = 1.0;
+    }
+    ABCUnsteadyVectorField(double epsilon, double omega)
+    {
+        this->epsilon = epsilon;
+        this->omega = omega;
+    }
+    double getDeltaXComponentValue(double t, double x, double y, double z);
+    double getDeltaYComponentValue(double t, double x, double y, double z);
+    double getDeltaZComponentValue(double t, double x, double y, double z);
 };
 
 #endif

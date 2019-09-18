@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include <fields/ABCUnsteadyVectorField.h>
+#include <fields/ABCUnsteadyVectorField.cpp>
 #include <utils/NP.h>
 #include <dataio/VTKProcessor.h>
 

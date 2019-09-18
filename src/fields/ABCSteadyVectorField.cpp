@@ -1,7 +1,5 @@
-#include <ABCSteadyVectorField.h>
-
 /* The Arnold-Beltrami-Childress flow, a steady state flow,
- * is defined as a flow with a 3-value parmeterization.
+ * is defined as a flow with a 3-value parameterization.
  * 
  * Let the parameters be known as A, B, and C. The flow is defined as:
  * [dx/dt, dy/dt, dz/dt] = [delta x, delta y, delta z]
@@ -14,6 +12,29 @@
  *
  * for all x, y, z, t.
  */
+ 
+#ifndef ABC_STEADY_VECTOR_FIELD_CPP
+#define ABC_STEADY_VECTOR_FIELD_CPP
+
+#include <archtypes/ParameterizedSteadyVectorField.h>
+
+class ABCVectorField : public ParameterizedVectorField
+{
+	private:
+		double a;
+		double b;
+		double c;
+	public:
+		ABCVectorField(double a, double b, double c)
+		{
+			this->a = a;
+			this->b = b;
+			this->c = c;
+		}
+		double getDeltaXComponentValue(double x, double y, double z);
+		double getDeltaYComponentValue(double x, double y, double z);
+		double getDeltaZComponentValue(double x, double y, double z);
+};
 
 double ABCSteadyVectorField::getDeltaXComponentValue(double x, double y, double z)
 {
@@ -29,3 +50,5 @@ double ABCSteadyVectorField::getDeltaZComponentValue(double x, double y, double 
 {
 	return (this->c * sin(y)) + (this->b * cos(x));
 }
+
+#endif
