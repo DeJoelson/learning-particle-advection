@@ -7,20 +7,20 @@
 #ifndef ABC_UNSTEADY_VECTOR_FIELD_H
 #define ABC_UNSTEADY_VECTOR_FIELD_H
 
-#include "archtypes/ParameterizedUnsteadVectorField.h"
+#include <archtypes/ParameterizedUnsteadyVectorField.h>
 
-class ABCTimeSeriesVectorField : public ParameterizedTimeSeriesVectorField
+class ABCUnsteadyVectorField : public ParameterizedUnsteadyVectorField
 {
 private:
 	double epsilon;
 	double omega;
 	public:
-		ABCTimeSeriesVectorField()
+		ABCUnsteadyVectorField()
 		{
 			this->epsilon = 1.0;
 			this->omega = 1.0;
 		}
-		ABCTimeSeriesVectorField(double epsilon, double omega)
+		ABCUnsteadyVectorField(double epsilon, double omega)
 		{
 			this->epsilon = epsilon;
 			this->omega = omega;

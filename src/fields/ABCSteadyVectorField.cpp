@@ -1,4 +1,4 @@
-#include "ABCSteadyVectorField.h"
+#include <ABCSteadyVectorField.h>
 
 /* The Arnold-Beltrami-Childress flow, a steady state flow,
  * is defined as a flow with a 3-value parmeterization.

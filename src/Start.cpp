@@ -2,9 +2,9 @@
 //
 
 #include <iostream>
-#include "fields/ABCUnsteadyVectorField.h"
-#include "utils/NP.h"
-#include "dataio/VTKProcessor.h"
+#include <fields/ABCUnsteadyVectorField.h>
+#include <utils/NP.h>
+#include <dataio/VTKProcessor.h>
 
 int main()
 {
@@ -19,7 +19,7 @@ int main()
 	*/
 	
 	ParameterizedUnsteadyVectorField* field;
-	ABCUnsteadyVectorField abcTimeSeriesInstance();
+	ABCUnsteadyVectorField abcUnsteadyInstance;
 	field = &abcUnsteadyInstance;
 
 	//ABCTimeSeriesVectorField field();

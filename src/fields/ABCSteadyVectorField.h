@@ -2,7 +2,7 @@
 #ifndef ABC_STEADY_VECTOR_FIELD_H
 #define ABC_STEADY_VECTOR_FIELD_H
 
-#include "archtypes/ParameterizedSteadyVectorField.h"
+#include <archtypes/ParameterizedSteadyVectorField.h>
 
 class ABCVectorField : public ParameterizedVectorField
 {
